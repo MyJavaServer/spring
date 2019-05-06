@@ -5,9 +5,31 @@
 
     <!--Beans.xml 用于给不同的 bean 分配唯一的 ID，并且控制不同值的对象的创建，而不会影响 Spring 的任何源文件。-->
 
-    <!--例如，使用下面的文件，你可以为 “message” 变量传递任何值，因此你就可以输出信息的不同值，而不会影响的 HelloSpring.java和MainApp.java 文件-->
-    <bean id="helloSpring" class="com.jayyin.spring.HelloSpring">
+    <!--例如，使用下面的文件，你可以为 “message” 变量传递任何值，因此你就可以输出信息的不同值，而不会影响的 HelloSpringBean.java和MainApp.java 文件-->
+    <bean id="helloSpringBean"
+          class="com.jayyin.spring.HelloSpringBean"
+          scope="singleton"
+          init-method="afterPropertiesSet"
+          destroy-method="afterDestroy">
         <property name="message" value="Hello Spring 123 !"/>
     </bean>
+
+
+    <!--作用域： scope="singleton"(单例 默认) || prototype（每次都创建新的bean对象）  -->
+
+    <!--延迟加载，而非容器启动时加载 （延迟初始化的 bean 告诉 IoC 容器在它第一次被请求时，而不是在启动时去创建一个 bean 实例。）-->
+    <!--<bean id="test1" class="" lazy-init="true"></bean>-->
+
+    <!--初始化方法，bean对象创建(实例化)之后 （bean 的所有必需的属性被容器设置之后）调用-->
+    <!--<bean id="test2" class="" init-method=""></bean>-->
+
+    <!--销毁方法，包含该bean对象的容器被销毁时调用 （只有从容器中移除 bean 之后，才能调用该方法）-->
+    <!--<bean id="" class="" destroy-method=""></bean>-->
+
+
+    <!-- Autowired注解配合Qualifier注解  测试用-->
+    <bean id="carFactory" class="com.jayyin.spring.test.CarFactory"></bean>
+    <bean id="bmwCar" class="com.jayyin.spring.test.BmwCar"></bean>
+    <bean id="benzCar" class="com.jayyin.spring.test.BenzCar"></bean>
 
 </beans>
