@@ -1,6 +1,7 @@
 package com.jayyin.spring;
 
-import org.springframework.context.ApplicationContext;
+import com.jayyin.spring.beans.HelloSpringBean;
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -27,7 +28,7 @@ public class MainApp {
          * WebXmlApplicationContext     该容器会在一个 web 应用程序的范围内加载在 XML 文件中已被定义的 bean。
          *
          */
-        ApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("Beans.xml");
         // 或者
 //        ApplicationContext context = new FileSystemXmlApplicationContext("//Users/jerryyin/workspace/intellijIDEA/spring/src/Beans.xml");
 
@@ -39,12 +40,16 @@ public class MainApp {
 
         //第二步：使用已创建的上下文的 getBean() 方法来获得所需的 bean。这个方法使用 bean 的 ID 返回一个最终可以转换为实际对象的通用对象。一旦有了对象，你就可以使用这个对象调用任何类的方法。
         System.out.println("I'm gonna to create HelloSpringBean object...");
-        HelloSpringBean helloSpringBean = (HelloSpringBean) context.getBean("helloSpring");
+        HelloSpringBean helloSpringBean = (HelloSpringBean) context.getBean("helloSpringBean");
         System.out.println("I was created HelloSpringBean object...");
         helloSpringBean.getMessage();
 
 //        CarFactory carFactory = (CarFactory) context.getBean("carFactory");
 //        carFactory.toString();
 
+
+        // 测试容器关闭，销毁bean对象，以便达到关闭的生命周期
+        // 你需要注册一个在 AbstractApplicationContext 类中声明的关闭 hook 的 registerShutdownHook() 方法。它将确保正常关闭，并且调用相关的 destroy 方法。
+        context.registerShutdownHook();
     }
 }

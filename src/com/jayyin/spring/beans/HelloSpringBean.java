@@ -1,6 +1,8 @@
-package com.jayyin.spring;
+package com.jayyin.spring.beans;
 
 import com.jayyin.spring.interfaces.InitializingBean;
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 
 /**
  * @author jerryyin
@@ -32,12 +34,15 @@ public class HelloSpringBean implements InitializingBean {
     }
 
     @Override
-    public void afterPropertiesSet() {
+    public void init() {
         System.out.println("This md is beforeInit()");
     }
 
     @Override
-    public void afterDestroy() {
-        System.out.println("This md is afterDestroy()");
+    public void destroy() {
+        System.out.println("This md is destroy()");
     }
+
+
+
 }

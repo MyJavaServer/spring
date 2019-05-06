@@ -15,7 +15,7 @@ public interface InitializingBean {
      * 在配置初始化之后执行 （bean对象创建（实例化）之后）
      * @throws Exception
      */
-    void afterPropertiesSet() throws Exception;
+    void init() throws Exception;
 
 
     /**
@@ -23,5 +23,5 @@ public interface InitializingBean {
      *
      * @throws Exception
      */
-    void afterDestroy() throws Exception;
+    void destroy() throws Exception;
 }

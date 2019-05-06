@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="init"
+       default-destroy-method="destroy">
+
+    <!--default-init-method default-destroy-method 框架默认的 初始化、销毁 方法-->
+
 
     <!--Beans.xml 用于给不同的 bean 分配唯一的 ID，并且控制不同值的对象的创建，而不会影响 Spring 的任何源文件。-->
 
     <!--例如，使用下面的文件，你可以为 “message” 变量传递任何值，因此你就可以输出信息的不同值，而不会影响的 HelloSpringBean.java和MainApp.java 文件-->
     <bean id="helloSpringBean"
-          class="com.jayyin.spring.HelloSpringBean"
-          scope="singleton"
-          init-method="afterPropertiesSet"
-          destroy-method="afterDestroy">
+          class="com.jayyin.spring.beans.HelloSpringBean"
+          scope="singleton">
+          <!--init-method="init"-->
+          <!--destroy-method="destroy">-->
         <property name="message" value="Hello Spring 123 !"/>
     </bean>
 
@@ -27,9 +32,12 @@
     <!--<bean id="" class="" destroy-method=""></bean>-->
 
 
+    <bean class="com.jayyin.spring.InitHelloSpring"/>
+
+
     <!-- Autowired注解配合Qualifier注解  测试用-->
-    <bean id="carFactory" class="com.jayyin.spring.test.CarFactory"></bean>
-    <bean id="bmwCar" class="com.jayyin.spring.test.BmwCar"></bean>
-    <bean id="benzCar" class="com.jayyin.spring.test.BenzCar"></bean>
+    <!--<bean id="carFactory" class="com.jayyin.spring.test.CarFactory"/>-->
+    <!--<bean id="bmwCar" class="com.jayyin.spring.test.BmwCar"/>-->
+    <!--<bean id="benzCar" class="com.jayyin.spring.test.BenzCar"/>-->
 
 </beans>
