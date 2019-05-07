@@ -13,9 +13,14 @@
     <!--例如，使用下面的文件，你可以为 “message” 变量传递任何值，因此你就可以输出信息的不同值，而不会影响的 HelloSpringBean.java和MainApp.java 文件-->
     <bean id="helloSpringBean"
           class="com.jayyin.spring.beans.HelloSpringBean"
-          scope="singleton">
-          <!--init-method="init"-->
-          <!--destroy-method="destroy">-->
+          scope="singleton"
+          autowire="constructor">
+
+        <!--构造方法创建对象时的参数-->
+        <!--<constructor-arg name="message" value="hahah"/>-->
+
+        <!--init-method="init"-->
+        <!--destroy-method="destroy">-->
         <property name="message" value="Hello Spring 123 !"/>
     </bean>
 
@@ -39,5 +44,8 @@
     <!--<bean id="carFactory" class="com.jayyin.spring.test.CarFactory"/>-->
     <!--<bean id="bmwCar" class="com.jayyin.spring.test.BmwCar"/>-->
     <!--<bean id="benzCar" class="com.jayyin.spring.test.BenzCar"/>-->
+
+    <bean id="customEventHandler" class="com.jayyin.spring.event.CustomEventHandler"/>
+    <bean id="cusApplicationEventPublisher" class="com.jayyin.spring.event.CusApplicationEventPublisher"/>
 
 </beans>
