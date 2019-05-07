@@ -64,4 +64,12 @@ public class HelloSpringBean implements InitializingBean, ApplicationListener<Co
     public void onApplicationEvent(ContextStartedEvent contextStartedEvent) {
         System.out.println("contextStartedEvent..." + contextStartedEvent);
     }
+
+
+    //测试用主动跑出异常的方法
+    public void printThrowException(){
+        System.out.println("Exception reised");
+        throw new IllegalArgumentException();
+    }
+
 }

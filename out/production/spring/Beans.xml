@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
        default-init-method="init"
        default-destroy-method="destroy">
+
 
     <!--default-init-method default-destroy-method 框架默认的 初始化、销毁 方法-->
 
@@ -47,5 +52,38 @@
 
     <bean id="customEventHandler" class="com.jayyin.spring.event.CustomEventHandler"/>
     <bean id="cusApplicationEventPublisher" class="com.jayyin.spring.event.CusApplicationEventPublisher"/>
+
+
+    <!--面向方向编程APO -->
+    <!--为了在本节的描述中使用 aop 命名空间标签，你需要导入 spring-aop 模块-->
+
+
+
+    <!-- 如果被代理的目标对象（本例"HelloSpringBean"） 实现了至少一个接口，则会使用JDK动态代理，所有该目标类型实现的接口都将被代理 ；
+    需要添加如下信息，否则会报异常：  java.lang.ClassCastException: com.sun.proxy.$Proxy2 cannot be cast to...-->
+    <!--或者直接在 《aop:config》中注入 -->
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+
+    <!--定义一个aspect 切面-->
+    <aop:config proxy-target-class="true">
+        <aop:aspect id="log" ref="jLogging">
+            <!--示例定义了一个名为 “businessService” 的切面，该切面将与 com.jayyin.spring.beans 包下的 HelloSpringBean 类中的 getMessage() 方法相匹配：-->
+            <aop:pointcut id="selectAll"
+                          expression="execution(* com.jayyin.spring.beans.HelloSpringBean.getMessage(..))"/>
+
+            <!--在方法之前调用-->
+            <aop:before pointcut-ref="selectAll" method="beforeAdvice"/>
+            <!--&lt;!&ndash;方法之后&ndash;&gt;-->
+            <aop:after pointcut-ref="selectAll" method="afterAdvice"/>
+            <!--方法正常返回之后-->
+            <aop:after-returning pointcut-ref="selectAll" method="returningAdvice" returning="o"/>
+            <!--抛出异常时-->
+            <aop:after-throwing pointcut-ref="selectAll" method="throwingAdvice" throwing="e"/>
+            <!---->
+            <aop:around pointcut-ref="selectAll" method="aroundAdvice"/>
+        </aop:aspect>
+    </aop:config>
+
+    <bean id="jLogging" class="com.jayyin.spring.aspect.JLogging"/>
 
 </beans>

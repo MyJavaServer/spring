@@ -28,5 +28,7 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Arquillian JUnit:Release" level="project" />
+    <orderEntry type="library" name="aspectj:aspectjrt:1.5.4" level="project" />
+    <orderEntry type="library" name="org.aspectj:aspectjweaver:1.9.3" level="project" />
   </component>
 </module>
