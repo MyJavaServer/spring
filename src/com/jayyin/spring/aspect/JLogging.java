@@ -21,7 +21,6 @@ public class JLogging {
         System.out.println("[aop-before] " + joinPoint.toString());
     }
 
-
     public void afterAdvice(JoinPoint joinPoint){
         System.out.println("[aop-after] " + joinPoint.toString());
     }

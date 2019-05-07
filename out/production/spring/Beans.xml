@@ -64,26 +64,28 @@
     <!--或者直接在 《aop:config》中注入 -->
     <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
 
-    <!--定义一个aspect 切面-->
-    <aop:config proxy-target-class="true">
-        <aop:aspect id="log" ref="jLogging">
-            <!--示例定义了一个名为 “businessService” 的切面，该切面将与 com.jayyin.spring.beans 包下的 HelloSpringBean 类中的 getMessage() 方法相匹配：-->
-            <aop:pointcut id="selectAll"
-                          expression="execution(* com.jayyin.spring.beans.HelloSpringBean.getMessage(..))"/>
+    <!--定义一个aspect 切面   基于xml的定义-->
+    <!--<aop:config proxy-target-class="true">-->
+        <!--<aop:aspect id="log" ref="jLogging">-->
+            <!--&lt;!&ndash;示例定义了一个名为 “businessService” 的切面，该切面将与 com.jayyin.spring.beans 包下的 HelloSpringBean 类中的 getMessage() 方法相匹配：&ndash;&gt;-->
+            <!--&lt;!&ndash;pointcut 切入点&ndash;&gt;-->
+            <!--<aop:pointcut id="getMessage"-->
+                          <!--expression="execution(* com.jayyin.spring.beans.HelloSpringBean.getMessage(..))"/>-->
 
-            <!--在方法之前调用-->
-            <aop:before pointcut-ref="selectAll" method="beforeAdvice"/>
-            <!--&lt;!&ndash;方法之后&ndash;&gt;-->
-            <aop:after pointcut-ref="selectAll" method="afterAdvice"/>
-            <!--方法正常返回之后-->
-            <aop:after-returning pointcut-ref="selectAll" method="returningAdvice" returning="o"/>
-            <!--抛出异常时-->
-            <aop:after-throwing pointcut-ref="selectAll" method="throwingAdvice" throwing="e"/>
-            <!---->
-            <aop:around pointcut-ref="selectAll" method="aroundAdvice"/>
-        </aop:aspect>
-    </aop:config>
+            <!--&lt;!&ndash;在方法之前调用&ndash;&gt;-->
+            <!--<aop:before pointcut-ref="getMessage" method="beforeAdvice"/>-->
+            <!--&lt;!&ndash;&lt;!&ndash;方法之后&ndash;&gt;&ndash;&gt;-->
+            <!--<aop:after pointcut-ref="getMessage" method="afterAdvice"/>-->
+            <!--&lt;!&ndash;方法正常返回之后&ndash;&gt;-->
+            <!--<aop:after-returning pointcut-ref="getMessage" method="returningAdvice" returning="o"/>-->
+            <!--&lt;!&ndash;抛出异常时&ndash;&gt;-->
+            <!--<aop:after-throwing pointcut-ref="getMessage" method="throwingAdvice" throwing="e"/>-->
+            <!--&lt;!&ndash;&ndash;&gt;-->
+            <!--<aop:around pointcut-ref="getMessage" method="aroundAdvice"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
 
     <bean id="jLogging" class="com.jayyin.spring.aspect.JLogging"/>
 
+    <bean id="AspectModule" class="com.jayyin.spring.aspect.AspectModule"/>
 </beans>
