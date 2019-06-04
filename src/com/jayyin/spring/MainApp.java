@@ -9,7 +9,10 @@ import org.springframework.context.event.ContextStartedEvent;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author jerryyin
@@ -79,28 +82,71 @@ public class MainApp {
 
     private static void testJdbc(ApplicationContext context) {
         StudentJDBCTemplate studentJDBCTemplate =
-                (StudentJDBCTemplate)context.getBean("studentJDBCTemplate");
+                (StudentJDBCTemplate) context.getBean("studentJDBCTemplate");
 
-        System.out.println("------Records Creation--------" );
+        System.out.println("------Records Creation--------");
         studentJDBCTemplate.create("Zara", 11);
         studentJDBCTemplate.create("Nuha", 2);
         studentJDBCTemplate.create("Ayan", 15);
 
-        System.out.println("------Listing Multiple Records--------" );
+        System.out.println("------Listing Multiple Records--------");
         List<Student> students = studentJDBCTemplate.listStudents();
         for (Student record : students) {
-            System.out.print("ID : " + record.getId() );
-            System.out.print(", Name : " + record.getName() );
+            System.out.print("ID : " + record.getId());
+            System.out.print(", Name : " + record.getName());
             System.out.println(", Age : " + record.getAge());
         }
 
-        System.out.println("----Updating Record with ID = 2 -----" );
+        System.out.println("----Updating Record with ID = 2 -----");
         studentJDBCTemplate.update(2, 20);
 
-        System.out.println("----Listing Record with ID = 2 -----" );
+        System.out.println("----Listing Record with ID = 2 -----");
         Student student = studentJDBCTemplate.getStudent(2);
-        System.out.print("ID : " + student.getId() );
-        System.out.print(", Name : " + student.getName() );
+        System.out.print("ID : " + student.getId());
+        System.out.print(", Name : " + student.getName());
         System.out.println(", Age : " + student.getAge());
     }
+
+    public void thread() {
+
+        int PRICE_L = 10;
+        int PRICE_S = 5;
+
+        int carType = 0 ;
+        AtomicInteger mCurNum = new AtomicInteger(500);
+        final BigDecimal[] mMoneySum = {BigDecimal.ZERO};
+
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(500);
+
+        Task task = new Task() {
+            @Override
+            public void run() {
+                //超过最大事件不计费了
+                if (this.times <= 12) {
+                    this.times++;
+                    if (carType == 0){
+                        mMoneySum[0] = mMoneySum[0].add(new BigDecimal(PRICE_S));
+                    }else if (carType == 1){
+                        mMoneySum[0] = mMoneySum[0].add(new BigDecimal(PRICE_L));
+                    }
+                }else {
+                    service.shutdown();
+                }
+            }
+        };
+
+        service.scheduleAtFixedRate(task, 0, 12, TimeUnit.HOURS);
+        service.execute(task);
+
+
+//        ThreadFactory factory = new ThreadF
+
+//        ScheduledExecutorService service = new ScheduledThreadPoolExecutor(500, new ThreadFactotyBuilder().);
+
+    }
+
+    public abstract class Task implements Runnable {
+        public int times = 0;  //执行次数
+    }
+
 }
