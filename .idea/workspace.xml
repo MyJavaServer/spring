@@ -5,13 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ce350f9-8f9a-4756-8a1a-fc678e06fce8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/smartfox_info.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/jayyin/spring/others/test/ApplicationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/AbsSubject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/JdkDynamicProxy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/RealSubject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spring/com/jayyin/spring/MainApp$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spring/com/jayyin/spring/MainApp$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spring/com/jayyin/spring/MainApp$Task.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spring/com/jayyin/spring/MainApp$Task.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/spring/com/jayyin/spring/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spring/com/jayyin/spring/MainApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/spring/com/jayyin/spring/jdbctest/mapper/StudentMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/spring/com/jayyin/spring/jdbctest/mapper/StudentMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jayyin/spring/MainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jayyin/spring/MainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spring/com/jayyin/spring/test/ApplicationTest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/spring/com/jayyin/spring/test/ApplicationTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jayyin/spring/aspect/JLogging.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jayyin/spring/aspect/JLogging.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/jayyin/spring/others/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jayyin/spring/others/README.md" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,40 +61,40 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="28" />
+          <entry key="class" value="31" />
           <entry key="iml" value="3" />
-          <entry key="java" value="56" />
-          <entry key="md" value="8" />
+          <entry key="java" value="70" />
+          <entry key="md" value="12" />
           <entry key="png" value="1" />
-          <entry key="xml" value="5" />
+          <entry key="xml" value="7" />
           <entry key="xsd" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="28" />
+          <entry key="CLASS" value="31" />
           <entry key="IDEA_MODULE" value="3" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="56" />
-          <entry key="Markdown" value="8" />
-          <entry key="XML" value="8" />
+          <entry key="JAVA" value="70" />
+          <entry key="Markdown" value="12" />
+          <entry key="XML" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="16" />
+          <entry key="dummy" value="27" />
           <entry key="iml" value="1" />
-          <entry key="java" value="3508" />
-          <entry key="md" value="214" />
+          <entry key="java" value="3857" />
+          <entry key="md" value="706" />
           <entry key="xml" value="1342" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="IDEA_MODULE" value="1" />
-          <entry key="JAVA" value="3508" />
-          <entry key="Markdown" value="214" />
-          <entry key="PLAIN_TEXT" value="16" />
+          <entry key="JAVA" value="3857" />
+          <entry key="Markdown" value="706" />
+          <entry key="PLAIN_TEXT" value="27" />
           <entry key="XML" value="1342" />
         </counts>
       </usages-collector>
@@ -102,31 +108,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/MainApp.java">
+        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/aspect/AspectModule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="278">
+              <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/SpringApplication.java">
+        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/beans/HelloSpringBean.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="255">
+              <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/test/ApplicationTest.java">
+        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/aspect/JLogging.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="240">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -137,9 +140,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor>
-                <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="139">
+                <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
               </first_editor>
               <second_editor />
             </state>
@@ -147,34 +150,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/dao/StudentDao.java">
+        <entry file="file://$PROJECT_DIR$/src/Aops.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="270">
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/mapper/StudentMapper.java">
+        <entry file="file://$PROJECT_DIR$/src/Beans.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/event/CustomEventHandler.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            <state relative-caret-position="180">
+              <caret line="78" column="68" selection-start-line="78" selection-start-column="68" selection-end-line="78" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -185,9 +173,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Arquillian JUnit Test Class" />
-        <option value="Interface" />
         <option value="spring-beans.schema" />
         <option value="FxmlFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -204,6 +192,7 @@
       <find>[aop</find>
       <find>AfterInitialization</find>
       <find>StudentMapper</find>
+      <find>beforeAdvice</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/com/jayyin/spring/jdbctest</dir>
@@ -234,7 +223,6 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/Aops.xml" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/beans/HelloSpringBean.java" />
-        <option value="$PROJECT_DIR$/src/com/jayyin/spring/aspect/JLogging.java" />
         <option value="$PROJECT_DIR$/src/AspectModule.java" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/aspect/AspectModule.java" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/db/ds.java" />
@@ -243,11 +231,19 @@
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/dao/StudentDao.java" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/impl/StudedntJDBCTemplate.java" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/impl/StudentJDBCTemplate2.java" />
-        <option value="$PROJECT_DIR$/src/Beans.xml" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/impl/StudentJDBCTemplate.java" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/mapper/StudentMapper.java" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/test/ApplicationTest.java" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/MainApp.java" />
+        <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/JdkProxy.java" />
+        <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/JdkProxy.java" />
+        <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/AbsSubject.java" />
+        <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/RealSubject.java" />
+        <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/JdkDynamicProxy.java" />
+        <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/Test.java" />
+        <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/readme.md" />
+        <option value="$PROJECT_DIR$/src/Beans.xml" />
+        <option value="$PROJECT_DIR$/src/com/jayyin/spring/aspect/JLogging.java" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/README.md" />
       </list>
     </option>
@@ -272,7 +268,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1280" />
+    <option name="width" value="634" />
     <option name="height" value="800" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -308,6 +304,23 @@
               <item name="spring" type="462c0819:PsiDirectoryNode" />
               <item name="others" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="others" type="462c0819:PsiDirectoryNode" />
+              <item name="jdk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="spring" type="462c0819:PsiDirectoryNode" />
+              <item name="others" type="462c0819:PsiDirectoryNode" />
+              <item name="jdk" type="462c0819:PsiDirectoryNode" />
+              <item name="proxy" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -333,7 +346,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559661454861" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559668985563" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Arquillian JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -368,7 +381,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.ApplicationTest">
+  <component name="RunManager" selected="Application.Test">
     <configuration name="ApplicationTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jayyin.spring.others.test.ApplicationTest" />
       <module name="spring" />
@@ -408,6 +421,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jayyin.spring.others.jdk.proxy.Test" />
+      <module name="spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jayyin.spring.others.jdk.proxy.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat Managed 7.x: MainAppTest" type="ArquillianJUnit" factoryName="" temporary="true" nameIsGenerated="true">
       <module name="spring" />
       <extension name="coverage">
@@ -434,9 +460,11 @@
       <item itemvalue="Application.SpringApplication" />
       <item itemvalue="Arquillian JUnit.Tomcat Managed 7.x: MainAppTest" />
       <item itemvalue="Application.ApplicationTest" />
+      <item itemvalue="Application.Test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Test" />
         <item itemvalue="Application.ApplicationTest" />
         <item itemvalue="Application.MainApp" />
         <item itemvalue="Arquillian JUnit.Tomcat Managed 7.x: MainAppTest" />
@@ -461,18 +489,18 @@
       <workItem from="1557370029294" duration="1820000" />
       <workItem from="1557805002785" duration="831000" />
       <workItem from="1557977497028" duration="24000" />
-      <workItem from="1559652409509" duration="3119000" />
+      <workItem from="1559652409509" duration="6509000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50786000" />
+    <option name="totallyTimeSpent" value="54176000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49787837" visible="true" weight="0.2197092" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49787837" visible="true" weight="0.25928918" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -480,7 +508,7 @@
       <window_info id="Structure" order="5" sideWeight="0.5021216" side_tool="true" weight="0.2197092" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32928064" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3281471" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.5247525" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.43161094" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -494,7 +522,7 @@
       <window_info anchor="bottom" id="Messages" order="12" weight="0.4115983" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32928064" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.24973376" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24959612" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
@@ -541,70 +569,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$PROJECT_DIR$/lib/spring-beans-4.3.18.RELEASE.jar!/org/springframework/beans/factory/support/AbstractBeanFactory.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="68" column="22" selection-start-line="68" selection-start-column="22" selection-end-line="68" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/spring-context-4.3.18.RELEASE.jar!/org/springframework/context/support/ClassPathXmlApplicationContext.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/test/Car.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/jboss/arquillian/junit/arquillian-junit-core/1.4.1.Final/arquillian-junit-core-1.4.1.Final.jar!/org/jboss/arquillian/junit/Arquillian.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/MainAppTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/test/BmwCar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/test/BenzCar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/test/CarFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/interfaces/InitializingBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="7" lean-forward="true" selection-start-line="13" selection-start-column="7" selection-end-line="13" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/spring-beans-4.3.18.RELEASE.jar!/org/springframework/beans/factory/config/BeanPostProcessor.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/lib/spring-context-4.3.18.RELEASE.jar!/org/springframework/context/ApplicationContext.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -681,29 +645,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/aspect/AspectModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/aspect/JLogging.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/impl/StudedntJDBCTemplate.java" />
     <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/impl/StudentJDBCTemplate2.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/beans/HelloSpringBean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -832,30 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Aops.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Beans.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="86" column="67" selection-start-line="86" selection-start-column="67" selection-end-line="86" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/MainApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/SpringApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -871,10 +790,140 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/MainApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/test/ApplicationTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        <state relative-caret-position="330">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/spring-aop-4.3.18.RELEASE.jar!/org/aopalliance/intercept/Joinpoint.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/spring-aop-4.3.18.RELEASE.jar!/org/aopalliance/intercept/Invocation.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="39" lean-forward="true" selection-start-line="7" selection-start-column="39" selection-end-line="7" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/AbsSubject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/javax/security/auth/Subject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="99" column="19" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/com/sun/proxy/$Proxy0.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-519">
+          <folding>
+            <element signature="e#0#2487#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/lang/reflect/Proxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="705" column="30" selection-start-line="705" selection-start-column="30" selection-end-line="705" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="60">
+            <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/beans/HelloSpringBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/aspect/AspectModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Aops.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Beans.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="78" column="68" selection-start-line="78" selection-start-column="68" selection-end-line="78" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/aspect/JLogging.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/RealSubject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#265#266#0" expanded="true" />
+            <element signature="e#330#331#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/jdk/proxy/JdkDynamicProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -883,9 +932,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret column="20" lean-forward="true" selection-start-column="20" selection-end-column="20" />
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="139">
+            <caret line="22" column="63" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
           </first_editor>
           <second_editor />
         </state>

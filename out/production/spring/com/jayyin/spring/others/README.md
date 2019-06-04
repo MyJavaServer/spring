@@ -10,24 +10,13 @@ spring没问，然后hashmap,并发的map,线程池，原子类，JVM，分布�
 
 面试题目：
 
-一、jdk动态代理 原理及实现？  （例如aspect切面）
-	
-	关键：实现 Invocationhandler接口, 重写 invoke()方法；
-	
+1.jdk动态代理 原理及实现？  （例如aspect切面）
+	impl Invocation.interface
 
-二、 ConcurrentHashMap 结构。 为什么线程安全、 并发量跟什么有关（有几个Segment桶 == 锁的数量， 就有多少的并发）
-    
-                   线程完全       jdk1.7                             jdk1.8
-        HashMap     不安全       数组+链表                        链表长度>8链表自动转化为红黑树（提高查询效率）     
-        ConHMap     安全      分段数组+链表，分段锁（segment）      链表长度>8链表自动转化为红黑树，并且摒弃了segment（桶）分段锁，
-                                                               对数组节点node加锁，锁数量增多，效率提升n倍数
-        结论：
-            为什么线程安全？ 因为加锁了；
-            并发量 取决于 锁的数量（1.7: 桶的数量；  1.8: 锁的数量，数组节点的数量）    
+2. ConcurrentHashMap 结构。 为什么线程安全、 并发量跟什么有关（有几个Segment桶 == 锁的数量， 就有多少的并发）
 
 
-三、 Atomic原子类 实现原理
-	
+3. 原子类 实现原理
 	Cas 无锁，死循环
 
    使用场景
@@ -35,7 +24,7 @@ spring没问，然后hashmap,并发的map,线程池，原子类，JVM，分布�
    为啥大并发不能用？（因为无锁，死循环+大并发 -》cpu 飙升）
 
 
-四、线程池。***** 必问
+4.线程池。***** 必问
 	原理：
 	
 		关键参数： pool数量。队列长度	
@@ -55,7 +44,7 @@ spring没问，然后hashmap,并发的map,线程池，原子类，JVM，分布�
 
 
 
-五、jvm 类加载器  双亲委派机制
+5.jvm 类加载器  双亲委派机制
 	https://www.cnblogs.com/protected/p/6420128.html
 
 	gc垃圾回收
@@ -69,18 +58,18 @@ spring没问，然后hashmap,并发的map,线程池，原子类，JVM，分布�
 	oom如何排查， 
 	cpu100怎么排查解决	jmap， jstack
 
-六、分布式id
+6. 分布式id
 	    
 	    怎么生成分布式id，怎么保证全剧唯一
     	分布式事务。 （干脆说不会）
 
 
-七、缓存 和数据库的 一致性
+7. 缓存 和数据库的 一致性
     
 	    先清除缓存旧值。-》 change db -> 再异步清缓存
 	    最终一致性
 
-八、吞吐量：
+8. 吞吐量：
 
         异步
         去锁
@@ -88,13 +77,13 @@ spring没问，然后hashmap,并发的map,线程池，原子类，JVM，分布�
         复用  （例如：线程池，线程复用）
         解偶
 
-九、dubbo原理
+9. dubbo原理
 
     	consumer 到 produce 的访问流程
 	    性能参数设定
 
 
-十、rpc 设计
+10.rpc 设计
 	远程调用 超时报错 如何实现；
 
 

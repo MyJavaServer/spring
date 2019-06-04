@@ -1,6 +1,8 @@
 package com.jayyin.spring.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 /**
  * @author jerryyin
