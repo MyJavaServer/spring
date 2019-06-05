@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4ce350f9-8f9a-4756-8a1a-fc678e06fce8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/jayyin/spring/others/classloader/ClassLoaderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/jayyin/spring/others/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jayyin/spring/others/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/jayyin/spring/others/test/ApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/jayyin/spring/others/test/ApplicationTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +44,8 @@
         <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="381">
-                <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+              <first_editor relative-caret-position="272">
+                <caret line="118" column="42" selection-start-line="118" selection-start-column="42" selection-end-line="118" selection-end-column="42" />
               </first_editor>
               <second_editor />
             </state>
@@ -52,14 +53,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/test/ApplicationTest.java">
+        <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/classloader/ClassLoaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="88" column="17" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+            <state relative-caret-position="255">
+              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/lang/ClassLoader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="1434" column="30" selection-start-line="1434" selection-start-column="30" selection-end-line="1434" selection-end-column="30" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2629#2630#0" expanded="true" />
-                <element signature="e#2661#2662#0" expanded="true" />
+                <element signature="e#7118#8856#0" />
               </folding>
             </state>
           </provider>
@@ -91,7 +99,7 @@
         <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/util/concurrent/BlockingQueue.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="454">
-              <caret line="295" column="38" lean-forward="true" selection-start-line="295" selection-start-column="38" selection-end-line="295" selection-end-column="38" />
+              <caret line="295" column="38" selection-start-line="295" selection-start-column="38" selection-end-line="295" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -235,6 +243,7 @@
         <option value="$PROJECT_DIR$/src/Beans.xml" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/aspect/JLogging.java" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/test/ApplicationTest.java" />
+        <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/classloader/ClassLoaderTest.java" />
         <option value="$PROJECT_DIR$/src/com/jayyin/spring/others/README.md" />
       </list>
     </option>
@@ -301,14 +310,6 @@
               <item name="spring" type="462c0819:PsiDirectoryNode" />
               <item name="others" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-              <item name="others" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -332,7 +333,7 @@
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.5653083" />
-    <property name="settings.editor.selected.configurable" value="Settings.Markdown" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -471,23 +472,23 @@
       <workItem from="1557805002785" duration="831000" />
       <workItem from="1557977497028" duration="24000" />
       <workItem from="1559652409509" duration="6509000" />
-      <workItem from="1559699255716" duration="9402000" />
+      <workItem from="1559699255716" duration="14137000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63578000" />
+    <option name="totallyTimeSpent" value="68313000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4969021" visible="true" weight="0.26180258" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4969021" visible="true" weight="0.26180258" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Capture Tool" order="4" />
-      <window_info id="Structure" order="5" sideWeight="0.5030979" side_tool="true" visible="true" weight="0.26180258" />
+      <window_info active="true" id="Structure" order="5" sideWeight="0.5030979" side_tool="true" visible="true" weight="0.26180258" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -500,7 +501,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.5304102" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Spring" order="9" weight="0.3281471" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.572843" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.5724907" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.2857143" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.4115983" />
       <window_info anchor="bottom" id="Inspection Results" order="13" weight="0.32928064" />
@@ -564,14 +565,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AspectModule.java" />
-    <entry file="file://$PROJECT_DIR$/spring.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/ds.java" />
     <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/jdbctest/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
@@ -897,18 +890,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/test/ApplicationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="88" column="17" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2629#2630#0" expanded="true" />
-            <element signature="e#2661#2662#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/util/concurrent/locks/ReentrantLock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -937,15 +918,44 @@
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/util/concurrent/BlockingQueue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="454">
-          <caret line="295" column="38" lean-forward="true" selection-start-line="295" selection-start-column="38" selection-end-line="295" selection-end-column="38" />
+          <caret line="295" column="38" selection-start-line="295" selection-start-column="38" selection-end-line="295" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/test/ApplicationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="655">
+          <caret line="116" column="1" lean-forward="true" selection-start-line="116" selection-start-column="1" selection-end-line="116" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2629#2630#0" expanded="true" />
+            <element signature="e#2661#2662#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/classloader/ClassLoaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/lang/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="1434" column="30" selection-start-line="1434" selection-start-column="30" selection-end-line="1434" selection-end-column="30" />
+          <folding>
+            <element signature="e#7118#8856#0" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/jayyin/spring/others/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="381">
-            <caret line="95" lean-forward="true" selection-start-line="95" selection-end-line="95" />
+          <first_editor relative-caret-position="272">
+            <caret line="118" column="42" selection-start-line="118" selection-start-column="42" selection-end-line="118" selection-end-column="42" />
           </first_editor>
           <second_editor />
         </state>
