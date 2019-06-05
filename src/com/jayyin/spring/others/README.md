@@ -114,30 +114,93 @@ spring没问，然后hashmap,并发的map,线程池，原子类，JVM，分布�
         如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。
     
 
-	内存模型 和 gc垃圾回收
+	4. 内存模型 和 gc垃圾回收
 		cms 回收算法
 https://www.cnblogs.com/mikevictor07/p/5023776.html
+https://www.cnblogs.com/dingyingsi/p/3760447.html
 	    
 	    JVM内存分区：5 块区域
-	     1.Heap area  堆：  
+<div align="center"><img src="images/img_jvm_mem2.png" width="500" hegiht="300"/></div>
+
+	     1.【method area 方法区】线程共享的内存区域
+	        它用于存储已被虚拟机加载的 类信息、常量、静态变量、即时编译器编译后的代码等数据。
+	        
+	        相对而言，垃圾收集行为在这个区域是比较少出现的，但并非数据进入了方法区就如永久代的名字一样“永久”存在了。
+	        这个区域的内存回收目标主要是针对常量池的回收和对类型的卸载，一般来说这个区域的回收“成绩”比较难以令人满意，尤其是类型的卸载，条件相当苛刻，但是这部分区域的回收确实是有必要的
+	     
+	     
+	     2.【Heap area  堆】 被所有线程共享，是Java虚拟机所管理的内存中最大的一块内存区域
+	        唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配内存
+	        垃圾收集器管理的主要区域，因此很多时候也被称做“GC 堆”（Garbage Collected Heap，幸好国内没翻译成“垃圾堆”）
+	        
+	        分代收集算法
 	        内部分为 新生代 + 老年代 两部分
 	             年轻代：大部分对象在这里分配，通常来说会进行比较小但是比较频繁的回收，花费时间较短。
                  年老代：内存相对较大，对象会相对保留比较长的时间，大对象也一般分配在此，占用空间上升缓慢并且回收频率低，"stop-the-world" 会在它回收时发生，花费较长的时间。
                     如下图中，对象在年轻代分配，经过一些时间后可能会被移到年老代。其中的permanent generation为持久区，主要存放元数据如class data structures, interned strings等信息。GC 重点在于 young gen 和 old gen的回收。      
+         
                     
-	     2.method area 方法区
-	     3.VM stack   栈
-	     4.native method stack 原生方法栈
-	     5.PC register    
+	     3.【VM stack   java虚拟机栈】  线程私有的，生命周期与线程相同； 
+	        存 局部变量 【各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（指针、句柄）】
+	        
+	        对这个区域规定了两种异常状况：如果线程请求的栈深度大
+            于虚拟机所允许的深度，将抛出StackOverflowError 异常；如果虚拟机栈可以动态扩展
+            （当前大部分的Java 虚拟机都可动态扩展，只不过Java 虚拟机规范中也允许固定长度的
+            虚拟机栈），当扩展时无法申请到足够的内存时会抛出OutOfMemoryError 异常。
+         
+            
+	     4.【native method stack 本地方法栈】 
+	        与虚拟机栈所发挥的作用是非常相似的，其区别不过是虚拟机栈为虚拟机执行Java 方法（也就是字节码）服务，
+	        而本地方法栈则是为虚拟机使用到的Native 方法服务。虚拟机规范中对本地方法栈中的方法使用的语
+            言、使用方式与数据结构并没有强制规定，因此具体的虚拟机可以自由实现它。甚至有的虚拟机（譬如Sun HotSpot 虚拟机）直接就把本地方法栈和虚拟机栈合二为一。
+            与虚拟机栈一样，本地方法栈区域也会抛出StackOverflowError 和OutOfMemoryError异常。
+	     
+	     
+	     5.【PC register  程序计数器】        线程私有的，  唯一一个在Java 虚拟机规范中没有规定任何OutOfMemoryError 情况的内存区域。
 	
-	
-	string常量池存在哪个位置
-		1.7（永久代） 和 1.8 分别存在那里
+<div align="center"><img src="images/img_jvm_mem1.png" width="500" hegiht="300"/></div>
+
+
+
+    5. 字符串常量池 概念：
+https://blog.csdn.net/bingguang1993/article/details/80921848	
+
+	string字符串常量池 存在哪个位置？  
+		 jdk1.7之前: 方法区 是存放在 永久代(PermGen)中，永久代和堆相互隔， 因此，其实是也可以说在 永久代 中； 
+		        【string常量池 也在永久代中；】
+		 
+		 jdk1.7: 存储在永久代的 部分数据 就已经转移到Java Heap（堆）或者Native memory。
+	            但永久代仍存在于JDK 1.7中，并没有完全移除，譬如符号引用(Symbols)转移到了native memory；
+	            【字符串常量池(interned strings)转移到了Java heap堆中】；类的静态变量(class statics variables )转移到了Java heap；
+	            
+		 jdk1.8: 仍然保留方法区的概念，只不过实现方式不同。取消永久代，方法存放于元空间(Metaspace)，元空间仍然与堆不相连，但与堆共享物理内存，逻辑上可认为在堆中。
+		        【string常量池 仍然在堆中】
+		 
+https://blog.csdn.net/qq_41872909/article/details/87903370
 https://www.cnblogs.com/cherryljr/p/6230380.html
 
-	
-	oom如何排查， 
-	cpu100怎么排查解决	jmap， jstack
+    
+	6. OOM 如何排查， 
+https://blog.51cto.com/wenshengzhu/2086935	
+
+    --> 分析oom常见的可能区域： 堆、栈（jvm虚拟机栈 和 本地方法栈）、
+    --> 分析oom常见的原因： JVM内存过小、程序不严密，产生了过多的垃圾、内存泄漏
+    --> 根据错误日志，一般日志会告诉你是那部分内存溢出，（比如 java.lang.OutOfMemoryError: Java heap space，显然是堆溢出），然后尝试相应部分内存进行进一步分析；
+    --> 可现尝试修改相应区域内存大小进行调整尝试，不行的话，再结合相关命令或工具进一步排查
+    
+    最常见的OOM情况有一下三种：
+      java.lang.OutOfMemoryError: Java heap space ------>java堆内存溢出，此种情况最常见，一般由于内存泄露或者堆的大小设置不当引起。对于内存泄露，需要通过内存监控软件查找程序中的泄露代码，而堆大小可以通过虚拟机参数-Xms,-Xmx等修改。
+      java.lang.OutOfMemoryError: PermGen space ------>java永久代溢出，即方法区溢出了，一般出现于大量Class或者jsp页面，或者采用cglib等反射机制的情况，因为上述情况会产生大量的Class信息存储于方法区。此种情况可以通过更改方法区的大小来解决，使用类似-XX:PermSize=64m -XX:MaxPermSize=256m的形式修改。另外，过多的常量尤其是字符串也会导致方法区溢出
+      java.lang.StackOverflowError ------> 不会抛OOM error，但也是比较常见的Java内存溢出。JAVA虚拟机栈溢出，一般是由于程序中存在死循环或者深度递归调用造成的，栈大小设置太小也会出现此种溢出。可以通过虚拟机参数-Xss来设置栈的大小
+       
+
+	7. cpu100怎么排查解决	jmap， jstack
+https://www.cnblogs.com/aflyun/p/9194104.html
+
+        #top 命令查看 cpu 100 的pid（进程id）
+        #jps -l  命令可以看到当前用户的所有进程的pid，和服务名称， 两者对照一下就知道了；
+        
+        
 
 六、分布式id
 	    

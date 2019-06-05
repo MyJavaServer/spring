@@ -1,6 +1,9 @@
 jdk 相关知识点
     
+    
     1.jdk动态代理
+    
+    https://www.cnblogs.com/dreamroute/p/5273888.html
     
     java中 动态代理 主要有 JDK 和 CGLIB 两种方式。
     区别主要是jdk是代理接口，而cglib是代理类。

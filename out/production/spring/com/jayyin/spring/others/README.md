@@ -10,66 +10,192 @@ spring没问，然后hashmap,并发的map,线程池，原子类，JVM，分布�
 
 面试题目：
 
-1.jdk动态代理 原理及实现？  （例如aspect切面）
-	impl Invocation.interface
-
-2. ConcurrentHashMap 结构。 为什么线程安全、 并发量跟什么有关（有几个Segment桶 == 锁的数量， 就有多少的并发）
-
-
-3. 原子类 实现原理
-	Cas 无锁，死循环
-
-   使用场景
-   	小并发的 场景下使用；  
-   为啥大并发不能用？（因为无锁，死循环+大并发 -》cpu 飙升）
-
-
-4.线程池。***** 必问
-	原理：
+一、jdk动态代理 原理及实现？  （例如aspect切面）
 	
-		关键参数： pool数量。队列长度	
-			ThreadPoolExecutor(int corePoolSize,		核心线程数
-                              int maximumPoolSize,		最大数
-                              long keepAliveTime,		空闲到销毁的时间
-                              TimeUnit unit,			时间单位
-                              BlockingQueue<Runnable> workQueue,	队列
-                              ThreadFactory threadFactory,		
-                              RejectedExecutionHandler handler) 	  线程池的拒绝策略（有）	
+	关键：实现 Invocationhandler接口, 重写 invoke()方法；
+	
 
-    ThreadFactory
+二、 ConcurrentHashMap 结构。 为什么线程安全、 并发量跟什么有关（有几个Segment桶 == 锁的数量， 就有多少的并发）
+    
+                   线程完全       jdk1.7                             jdk1.8
+        HashMap     不安全       数组+链表                        链表长度>8链表自动转化为红黑树（提高查询效率）     
+        ConHMap     安全      分段数组+链表，分段锁（segment）      链表长度>8链表自动转化为红黑树，并且摒弃了segment（桶）分段锁，
+                                                               对数组节点node加锁，锁数量增多，效率提升n倍数
+        结论：
+            为什么线程安全？ 因为加锁了；
+            并发量 取决于 锁的数量（1.7: 桶的数量；  1.8: 锁的数量，数组节点的数量）    
+
+
+三、 Atomic原子类 实现原理
+	
+	CAS 无锁，死循环
+    无锁操作是使用CAS(compare and swap)又叫做比较交换来鉴别线程是否出现冲突，出现冲突就重试当前操作直到没有冲突为止;
+    CAS是一种乐观锁策，即不会阻塞其他线程，
+    
+    问题：
+        1.ABA问题
+            因为CAS会检查旧值有没有变化，这里存在这样一个有意思的问题。比如
+        一个旧值A变为了成B，然后再变成A，刚好在做CAS时检查发现旧值并没有变化依然为A，但是实际上的确发生了变化。
+        解决方案可以沿袭数据库中常用的乐观锁方式，添加一个版本号可以解决。原来的变化路径A->B->A就变成了1A->2B->3C。
+
+        2.自旋时间过长
+            使用CAS时非阻塞同步，也就是说不会将线程挂起，会自旋（无非就是一个死循环）进行下一次尝试，如果这里自旋时间过长对性能是很大的消耗。
+            如果JVM能支持处理器提供的pause指令，那么在效率上会有一定的提升。
+            
+            这也是为什么atomic类不能在大并发的场景下适用的原因；  大并发导致自旋操作飙升，等于是很多的死循环 ——> CPU飙升，
+            并发越高，失败的次数会越多，CAS如果长时间不成功，会极大的增加CPU的开销。因此CAS不适合竞争十分频繁的场景。
+
+           使用场景
+            小并发的 场景下使用；  
+               为啥大并发不能用？（因为无锁，死循环+大并发 -》cpu 飙升）
+           
+   
+
+四、线程池。***** 必问
+	原理解析：
+	
+	1.关键参数： pool数量。队列长度	
+			ThreadPoolExecutor(int corePoolSize,		核心线程数   the number of threads to keep in the pool, even if they are idle, unless {@code allowCoreThreadTimeOut} is set       
+                              int maximumPoolSize,		最大数     the maximum number of threads to allow in the pool
+                              long keepAliveTime,		空闲到销毁的时间    when the number of threads is greater than the core, this is the maximum time that excess idle threads will wait for new tasks before terminating.
+                              TimeUnit unit,			时间单位
+                              BlockingQueue<Runnable> workQueue,	队列  the queue to use for holding tasks before they are
+                                                                 *        executed.  This queue will hold only the {@code Runnable}
+                                                                 *        tasks submitted by the {@code execute} method.        
+                                                                 *  装Runnable（只包含被execute()方法提交的task任务）的任务队列
+                              ThreadFactory threadFactory,		 创建新的线程时           the factory to use when the executor creates a new thread    那队列中的task任务创建新的线程
+                              RejectedExecutionHandler handler)  线程池的拒绝策略（有）	the handler to use when execution is blocked
+                                                                               *        because the thread bounds and queue capacities are reached
+                                                                               *    即线程个数超标 和 队列塞满 的情况下，都会导致新任务添加失败，这时候如何执行策略？
+                                                                               在它的 rejectedExecution(Runnable r, ThreadPoolExecutor executor) 方法中去处理
+
+    详细的线程池参数介绍和使用：
+    https://blog.csdn.net/jgteng/article/details/54409887
+
+    ThreadFactory 
+        内部包含一个 newThread(Runnable) 方法， 就是用来创建线程的;
     	定制线程thread
 
-	线程池的拒绝策略：
-    https://www.cnblogs.com/sessionbest/articles/8689220.html
+	2.线程池的拒绝策略：
+    https://blog.csdn.net/jgteng/article/details/54411423
+    
+    其实都在ThreadPoolExecutor类中，定义了这四种已有的策略，查看源码即可理解；
+        1.AbortPolicy(默认)       抛出异常
+        2.DiscardPolicy           空方法，啥都不做，不管
+        3.DiscardOldestPolicy     获取队列，删除队列头（最早的）任务[queue.poll()]，然后添加当前任务
+        4.CallerRunsPolicy       急性子，直接执行，[r.cun()] 直接主线程中执行当前任务，
+    以上几种还不满足，自定义:
+        5.自定义策略   实现 RejectedExecutionHandler 接口，重写 rejectedExecution()方法，在里面添加自己的逻辑即可；
 
+    3.BlockingQueue队列的类型和区别 （都是实现了 BlockingQueue 接口的）
+        1.LinkedBlockingQueue   链表结构   无界队列，FIFO，可以无限向队列中添加任务，直到内存溢出    Executors.newFixedThreadPool
+        2.ArrayBlockingQueue    数组结构   有界队列（初始化时设置容量）有界队列，FIFO，需要指定队列大小，如果队列满了，会触发线程池的RejectedExecutionHandler逻辑
+        3.SynchronousQueue  一种阻塞队列，其中每个 put 必须等待一个 take，反之亦然。同步队列没有任何内部容量，甚至连一个队列的容量都没有。
+                            可以简单理解为是一个容量只有1的队列。Executors.newCachedThreadPool使用的是这个队列                           
+        4.PriorityBlockingQueue 优先级队列，线程池会优先选取优先级高的任务执行，队列中的元素必须实现Comparable接口
 
-
-5.jvm 类加载器  双亲委派机制
+    
+五、jvm 类加载器  双亲委派机制
 	https://www.cnblogs.com/protected/p/6420128.html
+	https://www.cnblogs.com/developer-ios/p/5550789.html
 
-	gc垃圾回收
+    1. 类加载的过程 【.java -> .class -> 二进制字节码 -> jvm开辟内存、创建实例对象 -> 使用运行】
+        a.加载    class文件转化为二进制字节流，存储到jvm的方法区中，等待验证；
+        b.验证    为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求（版本、规范、格式、安全性之类的，基本都是针对jvm虚拟机）
+        c.准备    准备阶段是正式为变量分配内存并设置初始值，这些内存都将在方法区中进行分配，这里的变量仅包括类标量不包括实例变量。
+        d.解析    解析是虚拟机将常量池的符号引用替换为直接引用的过程。
+        e.初始化   是根据程序员制定的主观计划区初始化变量和其他资源，或者可以从另外一个角度来表达：初始化阶段是执行类构造器<clinit>()方法的过程。
+                
+    2. 类加载器
+        各种类加载器，其实简单讲都是 将 各个加载器对应的（其实大多是jdk下面的）类库 加载到内存里，供开发者使用；
+                    
+    3. 双亲委派机制
+        JVM在加载类时默认采用的是双亲委派机制。通俗的讲，就是某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次递归，
+        如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。
+    
+
+	4. 内存模型 和 gc垃圾回收
 		cms 回收算法
+https://www.cnblogs.com/mikevictor07/p/5023776.html
+https://www.cnblogs.com/dingyingsi/p/3760447.html
+	    
+	    JVM内存分区：5 块区域
+<div align="center"><img src="images/img_jvm_mem2.png" width="500" hegiht="300"/></div>
 
-	内存模型
+	     1.【method area 方法区】线程共享的内存区域
+	        它用于存储已被虚拟机加载的 类信息、常量、静态变量、即时编译器编译后的代码等数据。
+	        
+	        相对而言，垃圾收集行为在这个区域是比较少出现的，但并非数据进入了方法区就如永久代的名字一样“永久”存在了。
+	        这个区域的内存回收目标主要是针对常量池的回收和对类型的卸载，一般来说这个区域的回收“成绩”比较难以令人满意，尤其是类型的卸载，条件相当苛刻，但是这部分区域的回收确实是有必要的
+	     
+	     
+	     2.【Heap area  堆】 被所有线程共享，是Java虚拟机所管理的内存中最大的一块内存区域
+	        唯一目的就是存放对象实例，几乎所有的对象实例都在这里分配内存
+	        垃圾收集器管理的主要区域，因此很多时候也被称做“GC 堆”（Garbage Collected Heap，幸好国内没翻译成“垃圾堆”）
+	        
+	        分代收集算法
+	        内部分为 新生代 + 老年代 两部分
+	             年轻代：大部分对象在这里分配，通常来说会进行比较小但是比较频繁的回收，花费时间较短。
+                 年老代：内存相对较大，对象会相对保留比较长的时间，大对象也一般分配在此，占用空间上升缓慢并且回收频率低，"stop-the-world" 会在它回收时发生，花费较长的时间。
+                    如下图中，对象在年轻代分配，经过一些时间后可能会被移到年老代。其中的permanent generation为持久区，主要存放元数据如class data structures, interned strings等信息。GC 重点在于 young gen 和 old gen的回收。      
+         
+                    
+	     3.【VM stack   java虚拟机栈】  线程私有的，生命周期与线程相同； 
+	        存 局部变量 【各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（指针、句柄）】
+	        
+	        对这个区域规定了两种异常状况：如果线程请求的栈深度大
+            于虚拟机所允许的深度，将抛出StackOverflowError 异常；如果虚拟机栈可以动态扩展
+            （当前大部分的Java 虚拟机都可动态扩展，只不过Java 虚拟机规范中也允许固定长度的
+            虚拟机栈），当扩展时无法申请到足够的内存时会抛出OutOfMemoryError 异常。
+         
+            
+	     4.【native method stack 本地方法栈】 
+	        与虚拟机栈所发挥的作用是非常相似的，其区别不过是虚拟机栈为虚拟机执行Java 方法（也就是字节码）服务，
+	        而本地方法栈则是为虚拟机使用到的Native 方法服务。虚拟机规范中对本地方法栈中的方法使用的语
+            言、使用方式与数据结构并没有强制规定，因此具体的虚拟机可以自由实现它。甚至有的虚拟机（譬如Sun HotSpot 虚拟机）直接就把本地方法栈和虚拟机栈合二为一。
+            与虚拟机栈一样，本地方法栈区域也会抛出StackOverflowError 和OutOfMemoryError异常。
+	     
+	     
+	     5.【PC register  程序计数器】        线程私有的，  唯一一个在Java 虚拟机规范中没有规定任何OutOfMemoryError 情况的内存区域。
 	
-	string常量池存在哪个位置
-		1.7（永久代） 和 1.8 分别存在那里
+<div align="center"><img src="images/img_jvm_mem1.png" width="500" hegiht="300"/></div>
 
+
+
+    字符串常量池 概念：
+https://blog.csdn.net/bingguang1993/article/details/80921848	
+
+	string字符串常量池 存在哪个位置？  
+		 jdk1.7之前: 方法区 是存放在 永久代(PermGen)中，永久代和堆相互隔， 因此，其实是也可以说在 永久代 中； 
+		        【string常量池 也在永久代中；】
+		 
+		 jdk1.7: 存储在永久代的 部分数据 就已经转移到Java Heap（堆）或者Native memory。
+	            但永久代仍存在于JDK 1.7中，并没有完全移除，譬如符号引用(Symbols)转移到了native memory；
+	            【字符串常量池(interned strings)转移到了Java heap堆中】；类的静态变量(class statics variables )转移到了Java heap；
+	            
+		 jdk1.8: 仍然保留方法区的概念，只不过实现方式不同。取消永久代，方法存放于元空间(Metaspace)，元空间仍然与堆不相连，但与堆共享物理内存，逻辑上可认为在堆中。
+		        【string常量池 仍然在堆中】
+		 
+https://blog.csdn.net/qq_41872909/article/details/87903370
+https://www.cnblogs.com/cherryljr/p/6230380.html
+
+    
+	
 	oom如何排查， 
 	cpu100怎么排查解决	jmap， jstack
 
-6. 分布式id
+六、分布式id
 	    
 	    怎么生成分布式id，怎么保证全剧唯一
     	分布式事务。 （干脆说不会）
 
 
-7. 缓存 和数据库的 一致性
+七、缓存 和数据库的 一致性
     
 	    先清除缓存旧值。-》 change db -> 再异步清缓存
 	    最终一致性
 
-8. 吞吐量：
+八、吞吐量：
 
         异步
         去锁
@@ -77,13 +203,13 @@ spring没问，然后hashmap,并发的map,线程池，原子类，JVM，分布�
         复用  （例如：线程池，线程复用）
         解偶
 
-9. dubbo原理
+九、dubbo原理
 
     	consumer 到 produce 的访问流程
 	    性能参数设定
 
 
-10.rpc 设计
+十、rpc 设计
 	远程调用 超时报错 如何实现；
 
 
