@@ -28,33 +28,73 @@ spring没问，然后hashmap,并发的map,线程池，原子类，JVM，分布�
 
 三、 Atomic原子类 实现原理
 	
-	Cas 无锁，死循环
+	CAS 无锁，死循环
+    无锁操作是使用CAS(compare and swap)又叫做比较交换来鉴别线程是否出现冲突，出现冲突就重试当前操作直到没有冲突为止;
+    CAS是一种乐观锁策，即不会阻塞其他线程，
+    
+    问题：
+        1.ABA问题
+            因为CAS会检查旧值有没有变化，这里存在这样一个有意思的问题。比如
+        一个旧值A变为了成B，然后再变成A，刚好在做CAS时检查发现旧值并没有变化依然为A，但是实际上的确发生了变化。
+        解决方案可以沿袭数据库中常用的乐观锁方式，添加一个版本号可以解决。原来的变化路径A->B->A就变成了1A->2B->3C。
 
-   使用场景
-   	小并发的 场景下使用；  
-   为啥大并发不能用？（因为无锁，死循环+大并发 -》cpu 飙升）
+        2.自旋时间过长
+            使用CAS时非阻塞同步，也就是说不会将线程挂起，会自旋（无非就是一个死循环）进行下一次尝试，如果这里自旋时间过长对性能是很大的消耗。
+            如果JVM能支持处理器提供的pause指令，那么在效率上会有一定的提升。
+            
+            这也是为什么atomic类不能在大并发的场景下适用的原因；  大并发导致自旋操作飙升，等于是很多的死循环 ——> CPU飙升，
+            并发越高，失败的次数会越多，CAS如果长时间不成功，会极大的增加CPU的开销。因此CAS不适合竞争十分频繁的场景。
 
+           使用场景
+            小并发的 场景下使用；  
+               为啥大并发不能用？（因为无锁，死循环+大并发 -》cpu 飙升）
+           
+   
 
 四、线程池。***** 必问
-	原理：
+	原理解析：
 	
-		关键参数： pool数量。队列长度	
-			ThreadPoolExecutor(int corePoolSize,		核心线程数
-                              int maximumPoolSize,		最大数
-                              long keepAliveTime,		空闲到销毁的时间
+	1.关键参数： pool数量。队列长度	
+			ThreadPoolExecutor(int corePoolSize,		核心线程数   the number of threads to keep in the pool, even if they are idle, unless {@code allowCoreThreadTimeOut} is set       
+                              int maximumPoolSize,		最大数     the maximum number of threads to allow in the pool
+                              long keepAliveTime,		空闲到销毁的时间    when the number of threads is greater than the core, this is the maximum time that excess idle threads will wait for new tasks before terminating.
                               TimeUnit unit,			时间单位
-                              BlockingQueue<Runnable> workQueue,	队列
-                              ThreadFactory threadFactory,		
-                              RejectedExecutionHandler handler) 	  线程池的拒绝策略（有）	
+                              BlockingQueue<Runnable> workQueue,	队列  the queue to use for holding tasks before they are
+                                                                 *        executed.  This queue will hold only the {@code Runnable}
+                                                                 *        tasks submitted by the {@code execute} method.        
+                                                                 *  装Runnable（只包含被execute()方法提交的task任务）的任务队列
+                              ThreadFactory threadFactory,		 创建新的线程时           the factory to use when the executor creates a new thread    那队列中的task任务创建新的线程
+                              RejectedExecutionHandler handler)  线程池的拒绝策略（有）	the handler to use when execution is blocked
+                                                                               *        because the thread bounds and queue capacities are reached
+                                                                               *    即线程个数超标 和 队列塞满 的情况下，都会导致新任务添加失败，这时候如何执行策略？
+                                                                               在它的 rejectedExecution(Runnable r, ThreadPoolExecutor executor) 方法中去处理
 
-    ThreadFactory
+    详细的线程池参数介绍和使用：
+    https://blog.csdn.net/jgteng/article/details/54409887
+
+    ThreadFactory 
+        内部包含一个 newThread(Runnable) 方法， 就是用来创建线程的;
     	定制线程thread
 
-	线程池的拒绝策略：
-    https://www.cnblogs.com/sessionbest/articles/8689220.html
+	2.线程池的拒绝策略：
+    https://blog.csdn.net/jgteng/article/details/54411423
+    
+    其实都在ThreadPoolExecutor类中，定义了这四种已有的策略，查看源码即可理解；
+        1.AbortPolicy(默认)       抛出异常
+        2.DiscardPolicy           空方法，啥都不做，不管
+        3.DiscardOldestPolicy     获取队列，删除队列头（最早的）任务[queue.poll()]，然后添加当前任务
+        4.CallerRunsPolicy       急性子，直接执行，[r.cun()] 直接主线程中执行当前任务，
+    以上几种还不满足，自定义:
+        5.自定义策略   实现 RejectedExecutionHandler 接口，重写 rejectedExecution()方法，在里面添加自己的逻辑即可；
 
+    3.BlockingQueue队列的类型和区别 （都是实现了 BlockingQueue 接口的）
+        1.LinkedBlockingQueue   链表结构   无界队列，FIFO，可以无限向队列中添加任务，直到内存溢出    Executors.newFixedThreadPool
+        2.ArrayBlockingQueue    数组结构   有界队列（初始化时设置容量）有界队列，FIFO，需要指定队列大小，如果队列满了，会触发线程池的RejectedExecutionHandler逻辑
+        3.SynchronousQueue  一种阻塞队列，其中每个 put 必须等待一个 take，反之亦然。同步队列没有任何内部容量，甚至连一个队列的容量都没有。
+                            可以简单理解为是一个容量只有1的队列。Executors.newCachedThreadPool使用的是这个队列                           
+        4.PriorityBlockingQueue 优先级队列，线程池会优先选取优先级高的任务执行，队列中的元素必须实现Comparable接口
 
-
+    
 五、jvm 类加载器  双亲委派机制
 	https://www.cnblogs.com/protected/p/6420128.html
 
