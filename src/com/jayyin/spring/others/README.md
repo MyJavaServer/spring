@@ -240,7 +240,7 @@ https://www.cnblogs.com/null-qige/p/8664009.html
                 
                     显示的执行命令手动锁表：（一般用不到）
                         #LOCK TABLES xxx READ 
-                        #UNLOCK TABLES
+                        #UNLOCK TABLES 
                         
                 1. Lock Table Read 读锁|共享锁 S       线程可共享，不阻塞；      【所有只能读，不能写； 未锁住的表不能访问】
                     不影响其他线程读，但是不可写（自己写也不行）； 
@@ -262,6 +262,11 @@ https://www.cnblogs.com/null-qige/p/8664009.html
     
 	    先清除缓存旧值。-》 change db -> 再异步清缓存
 	    最终一致性
+	    
+	    绝对一致：
+	        串行化，加队列； 缺点：并发量大幅下降；
+	        
+	        
 
 八、吞吐量：
 
